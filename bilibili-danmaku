@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if echo $1 | grep ep; then
+    av=$(curl -k -L $1 | sed "s#>#\n#g;s#<#\n#g;s#?#\n#g" | egrep -m 1 "AV" | sed "s#AV##g")
+else
+    av=$(echo $1 | sed "s#/#\n#g;s#av##g;s#?#\n#g" | egrep -m 1 "[0-9]")
+fi
+
+echo "Get AV = ${av}"
+
+cid=$(curl -k -L http://www.jijidown.com/Api/AvToCid/$av | sed "s/:/\n/g;s/,/\n/g" | egrep -A1 "CID" | egrep "[0-9]" | sed "s/ //g")
+
+echo "Get CID := ${cid}"
+
+curl -k -L --compressed -O http://comment.bilibili.com/${cid}.xml
+
+danmaku2ass -fn 微软雅黑 -fs 30 -dm 10 -ds 5 -s 1920x1080 ${cid}.xml | sed "s/H00000000, 0/H00000000, 1/g" > ${cid}.ass
+rm ${cid}.xml
+
+echo "Finished"
