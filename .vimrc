@@ -20,7 +20,7 @@ syntax on
 let g:airline_theme='light'
 
 "clipboard
-let s:clip = '/mnt/c/Windows/System32/clip.exe' 
+let s:clip = '/c/Windows/System32/clip.exe' 
 if executable(s:clip)
     augroup WSLYank
         autocmd!

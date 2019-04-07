@@ -14,7 +14,7 @@ echo "Get CID := ${cid}"
 
 curl -k -L --compressed -O http://comment.bilibili.com/${cid}.xml
 
-danmaku2ass -fn 微软雅黑 -fs 30 -dm 10 -ds 5 -s 1920x1080 ${cid}.xml | sed "s/H00000000, 0/H00000000, 1/g" > ${cid}.ass
+danmaku2ass -fn 微软雅黑 -fs 27 -dm 10 -ds 5 -s 1920x1080 ${cid}.xml | sed "s/H00000000, 0/H00000000, 1/g" > ${cid}.ass
 rm ${cid}.xml
 
 echo "Finished"
