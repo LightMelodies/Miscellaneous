@@ -107,4 +107,10 @@ alias ls="ls --color=auto -I '\$Recycle.Bin' -I '\$RECYCLE.BIN' -I 'System Volum
 
 zstyle ':completion:*' ignored-patterns '*My\ *' '*desktop.ini' '*\$Recycle.Bin' '*System\ *' '*NTUSER*' '*ntuser*' '*hiberfil.sys' '*pagefile.sys' '*Documents\ and\ Settings*' '*Application\ Data*' '*All\ Users' '*Default\ User' '*Local\ Settings' '*Cookies' '*SendTo' '*NetHood' '*Recent' '*PrintHood'  '*Templates'  '*「开始」菜单'
 
+# cat
+alias cat="lolcat"
+
+# mongodb
+alias mongod="sudo mkdir -p /run/mongodb && sudo chown frost:mongodb /run/mongodb && mongod -f /etc/mongodb.conf"
+
 compinit
